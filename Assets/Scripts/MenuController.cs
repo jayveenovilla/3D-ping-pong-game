@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
     public GameManager gameManager;
-    public Button playButton, creditsButton, quitButton;
+    public Button playButton, creditsButton, quitButton, menuButton;
 
     private void Awake() {
         gameManager = GameObject.FindObjectOfType<GameManager>();
@@ -20,14 +20,20 @@ public class MenuController : MonoBehaviour {
 
         if (CheckButton("Credits Button")) {
             creditsButton = GameObject.Find("Credits Button").GetComponent<Button>();
-            Debug.Log("Credits Button");
-            //creditsButton.onClick.AddListener(() => LoadScene(2));
+            creditsButton.onClick.AddListener(() => LoadScene(1));
+        }
+
+        if (CheckButton("Menu Button")) {
+            menuButton = GameObject.Find("Menu Button").GetComponent<Button>();
+            Debug.Log("Menu Button");
+            menuButton.onClick.AddListener(() => LoadScene(0));
         }
 
         if (CheckButton("Quit Button")) {
             quitButton = GameObject.Find("Quit Button").GetComponent<Button>();
             quitButton.onClick.AddListener(() => QuitGame());
         }
+
 
     }
 
