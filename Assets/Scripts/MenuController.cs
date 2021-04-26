@@ -32,8 +32,6 @@ public class MenuController : MonoBehaviour {
             quitButton = GameObject.Find("Quit Button").GetComponent<Button>();
             quitButton.onClick.AddListener(() => QuitGame());
         }
-
-
     }
 
     public bool CheckButton(string str) {
