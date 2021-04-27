@@ -26,7 +26,6 @@ public class BallMovement : MonoBehaviour {
             MoveBall();
         }
 
-        Debug.Log(ballDirection);
     }
 
     private void MoveBall() {
