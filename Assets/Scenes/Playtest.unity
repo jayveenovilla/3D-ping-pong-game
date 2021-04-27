@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 29083313}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 107028969}
   - component: {fileID: 107028968}
   - component: {fileID: 107028971}
+  - component: {fileID: 107028972}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -355,7 +356,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107028966}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f2b431f184f70644aaa1908db3482796, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -419,11 +420,24 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 4
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!114 &107028972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107028966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9cba8e783974ad44a81670fb39aafa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballSpeed: 20
 --- !u!1 &288096566
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +544,7 @@ GameObject:
   - component: {fileID: 310333497}
   m_Layer: 0
   m_Name: Boundary Right
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -919,7 +933,7 @@ GameObject:
   - component: {fileID: 983919736}
   m_Layer: 0
   m_Name: Boundary Enemy Goal
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1547,7 +1561,7 @@ GameObject:
   - component: {fileID: 1971259258}
   m_Layer: 0
   m_Name: Boundary Left
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1706,7 +1720,7 @@ GameObject:
   - component: {fileID: 2144554528}
   m_Layer: 0
   m_Name: Boundary Players Goal
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
