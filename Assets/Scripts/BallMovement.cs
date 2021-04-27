@@ -3,39 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BallMovement : MonoBehaviour {
-    public GameManager gameManager;
-    public Rigidbody rb;
-    public float speed;
+    [SerializeField]
+    private float ballSpeed;
 
-    void Awake() {
-        gameManager = GameObject.FindObjectOfType<GameManager>();
-
-        rb = GetComponent<Rigidbody>();
-    }
+    private Vector3 ballDirection;
+    private Vector3 ballStartPosition;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start() {
-        Vector3 movement = new Vector3(0f, 0f, -1f);
-        rb.velocity = speed * movement;
-        //rb.MovePosition(transform.position + movement * Time.deltaTime * speed);
+        rb = GetComponent<Rigidbody>();
+        ballStartPosition = transform.position;         //start position of ball
+        MoveBall();
+    }
+
+    // Update is called once per frame
+    void FixedUpdate() {
+        rb.MovePosition(transform.position + ballDirection * Time.deltaTime * ballSpeed);
+
+        //resets position of ball to center
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            MoveBall();
+        }
+
+        Debug.Log(ballDirection);
+    }
+
+    private void MoveBall() {
+        transform.position = ballStartPosition;
+        float x = Random.Range(0, 2) == 0 ? -1 : 1;
+        float z = Random.Range(0, 2) == 0 ? -1 : 1;
+        ballDirection = new Vector3(x, 0, z).normalized;        //locks movement of ball to x and z axis only. it is based on position of our playing field
     }
 
     private void OnCollisionEnter(Collision other) {
-
-//        if (other.gameObject.tag == "Boundary") {
-//            var spd = rb.velocity.magnitude;
-//            Vector3 direction = Vector3.Reflect(rb.velocity.normalized, other.contacts[0].normal);
-//            rb.velocity = direction * Mathf.Max(spd, 0f);
-//            Debug.Log("Boundary");
-//        } else {
-            Vector3 direction = transform.position - other.transform.position;
-            rb.velocity = speed * direction;
-//            Debug.Log("Paddle");
-//        }
-
-        //direction += new Vector3(Random.Range(-1,1), 0f, Random.Range(-1, 1));
+        ContactPoint contact = other.GetContact(0);
+        Vector3 normal = contact.normal;
+        ballDirection = Vector3.Reflect(ballDirection, normal);     // Makes the reflected object appear opposite of the original object
         
-
-        Debug.Log(rb.velocity);
     }
 }
+
