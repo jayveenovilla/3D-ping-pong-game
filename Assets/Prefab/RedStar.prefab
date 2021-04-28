@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8492771803700956848}
   - component: {fileID: 8492771803700956849}
   - component: {fileID: 8492771803700956862}
+  - component: {fileID: 9024619113092542598}
   m_Layer: 0
   m_Name: RedStar
   m_TagString: Untagged
@@ -99,3 +100,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &9024619113092542598
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492771803700956863}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.902113, y: 1.8090173, z: 0.17496869}
+  m_Center: {x: 0, y: -0.09549135, z: 0.087484345}

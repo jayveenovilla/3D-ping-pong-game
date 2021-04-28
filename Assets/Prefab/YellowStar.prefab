@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7519697638629530608}
   - component: {fileID: 7519697638629530609}
   - component: {fileID: 7519697638629530610}
+  - component: {fileID: 1341283435262880646}
   m_Layer: 0
   m_Name: YellowStar
   m_TagString: Untagged
@@ -99,3 +100,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &1341283435262880646
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7519697638629530611}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.902113, y: 1.8090173, z: 0.17496869}
+  m_Center: {x: 0, y: -0.09549135, z: 0.087484345}
