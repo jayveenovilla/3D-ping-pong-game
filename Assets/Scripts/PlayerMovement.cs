@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public GameManager gameManager;
     public Rigidbody rb;
     public float speed;
+    private int maximumScore;//read from a file
 
 
     private void Awake() {
@@ -18,11 +20,21 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetAxis("Horizontal") != 0) {
             MoveHorizontal();
         }
-        // Commented out just in case we need this function
-/*        if(Input.GetAxis("Vertical") != 0) {
-            MoveForward();
+
+        // Increasing player 1 score
+        int highScore = Int16.Parse(gameManager.playerScoreText.text) + 1;
+        gameManager.playerScoreText.text = highScore.ToString();
+
+        //Checking victory condition
+        if (highScore >= maximumScore)
+        {
+            //fireWorks(); //show something to let the user they beat the high score
         }
-*/
+        // Commented out just in case we need this function
+        /*        if(Input.GetAxis("Vertical") != 0) {
+                    MoveForward();
+                }
+        */
     }
 
     private void MoveHorizontal() {
