@@ -5,7 +5,6 @@ using UnityEngine;
 public class DestroyBonus : MonoBehaviour
 {
     public SpawnBonus spawnBonus;
-
     public void Start()
     {
         spawnBonus = GameObject.Find("BonusSpawn").GetComponent<SpawnBonus>();
