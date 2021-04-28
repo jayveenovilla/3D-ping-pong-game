@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7519697638629530609}
   - component: {fileID: 7519697638629530610}
   - component: {fileID: 1341283435262880646}
+  - component: {fileID: 738260172175750573}
   m_Layer: 0
   m_Name: YellowStar
   m_TagString: Untagged
@@ -113,3 +114,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.902113, y: 1.8090173, z: 0.17496869}
   m_Center: {x: 0, y: -0.09549135, z: 0.087484345}
+--- !u!114 &738260172175750573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7519697638629530611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9295f7b2663b0148802e566ce31504c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnBonus: {fileID: 0}
