@@ -6,11 +6,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
     public MenuController menuController;
-    public  Text playerScoreText;
 
     public static GameManager _instance { get; private set; }
     private void Awake() {
-        playerScoreText.text = "0";
         if (_instance == null) {
             _instance = this;
             DontDestroyOnLoad(gameObject);
