@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5525367808307863420}
   - component: {fileID: 6588653137075841341}
   - component: {fileID: 5322664068525408294}
+  - component: {fileID: -2104997892405220632}
   m_Layer: 0
   m_Name: CoinRotate
   m_TagString: Untagged
@@ -113,3 +114,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.999654, y: 1.997301, z: 2}
   m_Center: {x: -0.0011765659, y: 0, z: 0}
+--- !u!114 &-2104997892405220632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6318252099318464169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9295f7b2663b0148802e566ce31504c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnBonus: {fileID: 0}
