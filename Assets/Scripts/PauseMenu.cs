@@ -19,6 +19,8 @@ public class PauseMenu : MonoBehaviour
 
     public void GoToMenu()
     {
+        isGamePaused = false;
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");     //menucontroller findobject will not find inactive buttons. used this function as onclick
     }
 
