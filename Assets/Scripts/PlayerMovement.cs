@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,10 +20,10 @@ public class PlayerMovement : MonoBehaviour
             MoveHorizontal();
         }
         // Commented out just in case we need this function
-/*        if(Input.GetAxis("Vertical") != 0) {
-            MoveForward();
-        }
-*/
+        /*        if(Input.GetAxis("Vertical") != 0) {
+                    MoveForward();
+                }
+        */
     }
 
     private void MoveHorizontal() {
