@@ -18,4 +18,5 @@ public class DestroyBonus : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
 }
