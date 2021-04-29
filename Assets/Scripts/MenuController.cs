@@ -6,14 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
     public GameManager gameManager;
-    public GameOverMenu gameOverMenu;
 
     public Button playButton, creditsButton, quitButton, menuButton;
 
     private void Awake() {
         gameManager = GameObject.FindObjectOfType<GameManager>();
         gameManager.ConnectMenuController();
-        gameOverMenu = GameObject.FindObjectOfType<GameOverMenu>();
 
         if (CheckButton("Play Button")) {
             playButton = GameObject.Find("Play Button").GetComponent<Button>();
@@ -49,12 +47,5 @@ public class MenuController : MonoBehaviour {
         #else
             Application.Quit();
         #endif
-    }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G) && SceneManager.GetActiveScene().name == "Playtest")    //for testing Game Over Menu in Playtest scene
-        {
-            gameOverMenu.GameOver();
-        }
     }
 }
