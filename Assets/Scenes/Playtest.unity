@@ -523,6 +523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballSpeed: 32
+  Paddle: {fileID: 0}
 --- !u!82 &107028973
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4742,6 +4743,7 @@ GameObject:
   - component: {fileID: 1881140580}
   - component: {fileID: 1881140585}
   - component: {fileID: 1881140584}
+  - component: {fileID: 1881140586}
   m_Layer: 0
   m_Name: PlayerPaddle
   m_TagString: Untagged
@@ -4854,6 +4856,18 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   rb: {fileID: 0}
   speed: 10
+--- !u!114 &1881140586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881140579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9299b4d21608e9341b74e1eeea317455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1908598806
 GameObject:
   m_ObjectHideFlags: 0
@@ -6296,7 +6310,7 @@ GameObject:
   - component: {fileID: 7315934534668338855}
   m_Layer: 5
   m_Name: GameOverObject
-  m_TagString: Untagged
+  m_TagString: GameOver
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
