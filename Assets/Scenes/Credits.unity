@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 391910270}
   - component: {fileID: 391910269}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: CreditsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -751,7 +751,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691129042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -148}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 391910272}
@@ -759,7 +759,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 800.00024, y: 373.2735}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &691129044
@@ -996,7 +996,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022191694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -148}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 391910272}
@@ -1004,7 +1004,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 353, y: -731}
+  m_AnchoredPosition: {x: 403, y: -1100}
   m_SizeDelta: {x: 700, y: 291.081}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1022191696
@@ -1045,38 +1045,43 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Faisal, Joshua, Jayvee, Marean
+  m_text: '
+
+    Faisal Bahoo, Joshua Santos, Jayvee Novilla, Marean Jibrael
 
 
 
-    Faisal, Joshua, Jayvee, Marean
+    Faisal
+    Bahoo, Joshua Santos, Jayvee Novilla, Marean Jibrael
 
 
 
-    Faisal,
-    Joshua, Jayvee, Marean
+    Faisal Bahoo, Joshua
+    Santos, Jayvee Novilla, Marean Jibrael
 
 
 
-    Faisal, Joshua, Jayvee, Marean
+    Faisal Bahoo, Joshua Santos, Jayvee
+    Novilla, Marean Jibrael
 
 
 
-    Faisal, Joshua,
-    Jayvee, Marean
+    Faisal Bahoo, Joshua Santos, Jayvee Novilla, Marean
+    Jibrael
 
 
 
-    Faisal, Joshua, Jayvee, Marean
+    Faisal Bahoo, Joshua Santos, Jayvee Novilla, Marean Jibrael
 
 
 
-    Faisal, Joshua, Jayvee,
-    Marean
+    Faisal
+    Bahoo, Joshua Santos, Jayvee Novilla, Marean Jibrael
 
 
 
-    Faisal, Joshua, Jayvee, Marean
+    Faisal Bahoo, Joshua
+    Santos, Jayvee Novilla, Marean Jibrael
 
 '
   m_isRightToLeft: 0
@@ -1169,7 +1174,7 @@ GameObject:
   - component: {fileID: 1178854706}
   - component: {fileID: 1178854705}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1903,7 +1908,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066807308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -148}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 391910272}
@@ -1911,7 +1916,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -279, y: -731}
+  m_AnchoredPosition: {x: -222, y: -1100}
   m_SizeDelta: {x: 700, y: 291.081}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &2066807310
@@ -1956,11 +1961,14 @@ MonoBehaviour:
 
 
 
+
     Production Manager
 
 
 
+
     Production Coordinator
+
 
 
 
@@ -1969,7 +1977,9 @@ MonoBehaviour:
 
 
 
+
     Systems/IT Coordinator
+
 
 
 
@@ -1977,8 +1987,10 @@ MonoBehaviour:
 
 
 
+
     Audio
     Engineers
+
 
 
 
