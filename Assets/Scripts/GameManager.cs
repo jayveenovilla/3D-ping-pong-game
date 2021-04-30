@@ -9,9 +9,9 @@ public class GameManager : MonoBehaviour {
     public class Player
     {
         public int highScore;      //current high score
-        public int currentScore;      //current high score
+        public int currentScore;      //current score
         public int playerLives;     //player lives
-        public string playerName ;   //player name to be displayed on HUD a
+        public string playerName ;   //player name to be displayed on HUD or game over screen with a high score
         public bool isPlayerAlive;      //not sure if bool is needed. just in case
     }
 

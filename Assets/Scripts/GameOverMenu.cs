@@ -40,9 +40,6 @@ public class GameOverMenu : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G) && SceneManager.GetActiveScene().name == "Playtest")    //for testing Game Over Menu in Playtest scene until "ball hits border" game over trigger is enabled
-        {
-            GameOver();
-        }
+
     }
 }
