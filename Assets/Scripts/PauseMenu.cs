@@ -9,10 +9,15 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     bool isGamePaused;
 
+    GameObject gameOverParent;
+    Transform gameOverChild;
+
     // Start is called before the first frame update
     void Start()
     {
         menuController = GameObject.FindObjectOfType<MenuController>();
+        gameOverParent = GameObject.FindGameObjectWithTag("GameOver");          //find gameover object as the parent
+        gameOverChild = gameOverParent.transform.Find("GameOverMenu");          //gameovermenu is intially inactive. find child of gameoverobject and save as transform
         pauseMenu.gameObject.SetActive(false);      //inactivates game over menu at start of playtest scene
         isGamePaused = false;
     }
@@ -45,7 +50,8 @@ public class PauseMenu : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "Playtest")    //for testing Game Over Menu in Playtest scene until "ball hits border" game over trigger is enabled
+        //added "is gameobject active" check to prevent Pause menu from being activated during Game Over Menu
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "Playtest" && !gameOverChild.gameObject.activeSelf)
         {
             if (!isGamePaused)
             {

@@ -8,10 +8,13 @@ public class GameOverMenu : MonoBehaviour
     public MenuController menuController;
     public GameObject gameOverMenu;
 
+    private GameObject ball;
+
     // Start is called before the first frame update
     void Start()
     {
         menuController = GameObject.FindObjectOfType<MenuController>();
+        ball = GameObject.FindGameObjectWithTag("Ball");
         gameOverMenu.gameObject.SetActive(false);      //inactivates game over menu at start of playtest scene
     }
     
@@ -33,12 +36,10 @@ public class GameOverMenu : MonoBehaviour
     public void GameOver()   //game over menu to be activated when player runs out of lives
     {
         gameOverMenu.gameObject.SetActive(true);
+        ball.SetActive(false);      //inactivate ball on game over scenario. destroy(object) causes an error with sound but now ball sound script now has a null check
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G) && SceneManager.GetActiveScene().name == "Playtest")    //for testing Game Over Menu in Playtest scene until "ball hits border" game over trigger is enabled
-        {
-            GameOver();
-        }
+
     }
 }
