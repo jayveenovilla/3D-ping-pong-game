@@ -7,12 +7,17 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour {
     public GameManager gameManager;
 
-    public Button playButton, creditsButton, quitButton, menuButton;
+    public Button playButton, creditsButton, quitButton, menuButton, instructionsButton;
 
     private void Awake() {
         gameManager = GameObject.FindObjectOfType<GameManager>();
         gameManager.ConnectMenuController();
 
+        if (CheckButton("Instructions Button")) {
+            instructionsButton = GameObject.Find("Instructions Button").GetComponent<Button>();
+            instructionsButton.onClick.AddListener(() => LoadScene(3));
+        }
+        
         if (CheckButton("Play Button")) {
             playButton = GameObject.Find("Play Button").GetComponent<Button>();
             playButton.onClick.AddListener(() => LoadScene(2));
