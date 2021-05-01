@@ -46,6 +46,8 @@ public class BallMovement : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision other) {
+        
+        
         string str = other.gameObject.name;
         if (str == "Boundary Players Goal" || str == "Boundary Enemy Goal")     //check the boundary names
         {
@@ -57,15 +59,22 @@ public class BallMovement : MonoBehaviour {
                 MoveBall();     //if player still has lives then move the ball back to start position
             }
         }
-        
-        if (str == "YellowStar")
-        {
-            Debug.Log("bonus tag works");
-        }
 
-        ContactPoint contact = other.GetContact(0);
-        Vector3 normal = contact.normal;
-        ballDirection = Vector3.Reflect(ballDirection, normal);     // Makes the reflected object appear opposite of the original object     
+        if (str == "PlayerPaddle" || str == "PlayerPaddle (1)")
+        {
+            Vector3 paddlePosition = other.transform.position;
+            Vector3 ballPosition = gameObject.transform.position;
+            Vector3 delta = ballPosition - paddlePosition;
+            Vector3 direction = delta.normalized;
+            ballDirection = direction;
+        }
+        else
+        {
+            ContactPoint contact = other.GetContact(0);
+            Vector3 normal = contact.normal;
+
+            ballDirection = Vector3.Reflect(ballDirection, normal);     // Makes the reflected object appear opposite of the original object     
+        }
     }
 
     private void OnTriggerEnter(Collider c)
@@ -75,6 +84,22 @@ public class BallMovement : MonoBehaviour {
             ballPosition = c.gameObject.transform.position;
             StartCoroutine(myParticleEffects.fireworkSmall());
         }
+    }
+
+    float speed = 5.0f;
+    void BallHitPaddle()
+    {
+        GameObject paddle = GameObject.Find("Player");
+        Vector2 paddlePosition = paddle.transform.position;
+        Vector2 ballPosition = gameObject.transform.position;
+
+        // this is the vector 'pointing' from the paddle to the ball
+        Vector2 delta = ballPosition - paddlePosition;
+        // normalizing converts a vector into a unit vector
+        // (i.e. a vector with the same direction, but a magnitude of 1)
+        Vector2 direction = delta.normalized;
+        // set the velocity to be the direction vector scaled to the desired speed
+        GetComponent<Rigidbody2D>().velocity = direction * speed;
     }
 }
 
