@@ -60,6 +60,8 @@ public class BallMovement : MonoBehaviour {
             if (GameManager._instance.player.playerLives > 0)
             {
                 isBallMoving = false;
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
                 ballDirection = new Vector3(0, 0, 0).normalized;    //resets vector to 0s for restart position so ball won't launch until MoveBall function
                 transform.position = ballStartPosition;     //if player still has lives then move the ball back to start position
             }
