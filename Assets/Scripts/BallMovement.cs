@@ -50,17 +50,31 @@ public class BallMovement : MonoBehaviour {
         if (str == "Boundary Players Goal" || str == "Boundary Enemy Goal")     //check the boundary names
         {
             ballPosition = rb.gameObject.transform.position;
-            StartCoroutine(myParticleEffects.playerSmoke());
+            StartCoroutine(myParticleEffects.blueSmoke());
             myPlayerLives.playerDecreaseLives();          //call gameover function in gameovermenu script
             if (GameManager._instance.player.playerLives > 0)
             {
                 MoveBall();     //if player still has lives then move the ball back to start position
             }
         }
+        
+        if (str == "YellowStar")
+        {
+            Debug.Log("bonus tag works");
+        }
 
         ContactPoint contact = other.GetContact(0);
         Vector3 normal = contact.normal;
         ballDirection = Vector3.Reflect(ballDirection, normal);     // Makes the reflected object appear opposite of the original object     
+    }
+
+    private void OnTriggerEnter(Collider c)
+    {
+        if (c.gameObject.tag == "Bonus")        //for use when the ball interacts with any of the stars/coins
+        {
+            ballPosition = c.gameObject.transform.position;
+            StartCoroutine(myParticleEffects.fireworkSmall());
+        }
     }
 }
 
