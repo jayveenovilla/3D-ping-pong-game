@@ -155,6 +155,7 @@ MonoBehaviour:
   creditsButton: {fileID: 0}
   quitButton: {fileID: 0}
   menuButton: {fileID: 0}
+  instructionsButton: {fileID: 0}
 --- !u!4 &25245682
 Transform:
   m_ObjectHideFlags: 0
@@ -484,8 +485,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -193.11, y: -56.139}
-  m_SizeDelta: {x: 386.18927, y: 112.27872}
+  m_AnchoredPosition: {x: -193.11, y: -51.9}
+  m_SizeDelta: {x: 386.18927, y: 120.66339}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &219402185
 Animator:
@@ -525,9 +526,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Achieve new high scores by collecting the pop up bonus power up stars
-    and coins. \nContact between the wall behind you (blue) and the pong ball will
-    cost the player one life."
+  m_text: "Get extra life by collecting 5 of the pop up bonus power up stars and
+    coins. \nContact between the wall behind you (blue) and the pong ball will cost
+    the player one life."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

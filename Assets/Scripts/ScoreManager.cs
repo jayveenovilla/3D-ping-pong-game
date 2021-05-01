@@ -45,6 +45,12 @@ public class ScoreManager : MonoBehaviour
     {
         bonusPoints++;
         bonusPointsText.text = bonusPoints.ToString();
+
+        if(bonusPoints >= 5)//once the player gets 5 bonus, gets extra life
+        {
+            GameManager._instance.player.playerLives++;
+            ResetBonus();
+        }
     }
 
     public void UpdateHighScore()
@@ -65,6 +71,11 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = score.ToString();
         gameOverScoreText.text = score.ToString();
 
+    }
+    public void ResetBonus()
+    {
+        bonusPoints = 0;
+        bonusPointsText.text = bonusPoints.ToString();
     }
 
     public void ClearHighScore()

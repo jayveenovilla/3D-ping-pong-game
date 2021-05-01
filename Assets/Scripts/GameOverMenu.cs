@@ -32,7 +32,6 @@ public class GameOverMenu : MonoBehaviour
     {
         menuController.QuitGame();      //quit game function in menu controller
     }
-
     public void GameOver()   //game over menu to be activated when player runs out of lives
     {
         gameOverMenu.gameObject.SetActive(true);
