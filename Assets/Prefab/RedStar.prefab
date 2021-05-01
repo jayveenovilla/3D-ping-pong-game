@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -6117074751265695378}
   m_Layer: 0
   m_Name: RedStar
-  m_TagString: Bonus
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

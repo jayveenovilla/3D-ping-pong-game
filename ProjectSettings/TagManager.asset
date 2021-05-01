@@ -7,8 +7,6 @@ TagManager:
   - Boundary
   - Ball
   - GameOver
-  - ParticleEffects
-  - Bonus
   layers:
   - Default
   - TransparentFX
