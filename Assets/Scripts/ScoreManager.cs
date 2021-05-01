@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    public int score, highScore, bonusPoints;
-    public Text scoreText, highScoreText, gameOverScoreText, bonusPointsText;
+    public int score, highScore, bonusPoints, lives;
+    public Text scoreText, highScoreText, gameOverScoreText, bonusPointsText,livesText;
     private void Awake()
     {
         instance = this;
@@ -29,7 +29,8 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        lives = GameManager._instance.player.playerLives;
+        livesText.text = lives.ToString();
     }
     
     public void AddScore()
