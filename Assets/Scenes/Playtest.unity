@@ -418,9 +418,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   highScore: 0
+  bonusPoints: 0
   scoreText: {fileID: 1699189757}
   highScoreText: {fileID: 1630787132}
-  gameOverScoreText: {fileID: 1630787132}
+  gameOverScoreText: {fileID: 1699189757}
+  bonusPointsText: {fileID: 594979695}
 --- !u!1 &107028966
 GameObject:
   m_ObjectHideFlags: 0

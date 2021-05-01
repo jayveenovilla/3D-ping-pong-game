@@ -16,6 +16,7 @@ public class DestroyBonus : MonoBehaviour
             //plus points todo
             spawnBonus.onTableCount--;
             Destroy(gameObject);
+            ScoreManager.instance.AddBonus();  //add a BonusPoints
         }
     }
 }
