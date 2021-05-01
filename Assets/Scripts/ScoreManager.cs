@@ -12,8 +12,10 @@ public class ScoreManager : MonoBehaviour
     {
         instance = this;
 
-        if(PlayerPrefs.HasKey("HighScore"))
+        if (PlayerPrefs.HasKey("HighScore"))
             highScore = PlayerPrefs.GetInt("HighScore");
+        else
+            highScore = 0;
         highScoreText.text = highScore.ToString();
 
     }
