@@ -5,6 +5,7 @@ using UnityEngine;
 public class BallMovement : MonoBehaviour {
     [SerializeField]
     private float ballSpeed;
+    private bool isBallMoving;
 
     private Vector3 ballDirection;
     private Vector3 ballStartPosition;
@@ -24,30 +25,34 @@ public class BallMovement : MonoBehaviour {
         myPlayerLives = Paddle.GetComponent<PlayerLives>();
         rb = GetComponent<Rigidbody>();
         ballStartPosition = transform.position;         //start position of ball
-        MoveBall();
+        isBallMoving = false;       //used for BallMove function to prevent spam of ball movement
     }
 
     // Update is called once per frame
     void FixedUpdate() {
         rb.MovePosition(transform.position + ballDirection * Time.deltaTime * ballSpeed);
+    }
 
-        //resets position of ball to center
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            MoveBall();
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!isBallMoving)      //launches ball only when ball is stationary
+            {
+                MoveBall();
+            }
         }
-
     }
 
     private void MoveBall() {
-        transform.position = ballStartPosition;
-        float x = Random.Range(0, 2) == 0 ? -1 : 1;
-        float z = Random.Range(0, 2) == 0 ? -1 : 1;
+        isBallMoving = true;
+        rb.MovePosition(ballStartPosition);
+        float x = Random.Range(0, 2) == 0 ? -1 : 1;       //set to -1 to launch toward player paddle
+        float z = Random.Range(0, 2) == 0 ? -1 : 1;       //set to -1 to launch toward player paddle
         ballDirection = new Vector3(x, 0, z).normalized;        //locks movement of ball to x and z axis only. it is based on position of our playing field
     }
 
     private void OnCollisionEnter(Collision other) {
-        
-        
         string str = other.gameObject.name;
         if (str == "Boundary Players Goal" || str == "Boundary Enemy Goal")     //check the boundary names
         {
@@ -56,7 +61,9 @@ public class BallMovement : MonoBehaviour {
             myPlayerLives.playerDecreaseLives();          //call gameover function in gameovermenu script
             if (GameManager._instance.player.playerLives > 0)
             {
-                MoveBall();     //if player still has lives then move the ball back to start position
+                isBallMoving = false;
+                ballDirection = new Vector3(0, 0, 0).normalized;    //resets vector to 0s for restart position so ball won't launch until MoveBall function
+                transform.position = ballStartPosition;     //if player still has lives then move the ball back to start position
             }
         }
 
@@ -64,7 +71,7 @@ public class BallMovement : MonoBehaviour {
         {
             Vector3 paddlePosition = other.transform.position;
             Vector3 ballPosition = gameObject.transform.position;
-            Vector3 delta = ballPosition - paddlePosition;
+            Vector3 delta = ballPosition - paddlePosition;      //angle ball deflects off of paddle changes depending on position paddle is hit
             Vector3 direction = delta.normalized;
             ballDirection = direction;
         }
@@ -72,7 +79,6 @@ public class BallMovement : MonoBehaviour {
         {
             ContactPoint contact = other.GetContact(0);
             Vector3 normal = contact.normal;
-
             ballDirection = Vector3.Reflect(ballDirection, normal);     // Makes the reflected object appear opposite of the original object     
         }
     }
@@ -84,22 +90,6 @@ public class BallMovement : MonoBehaviour {
             ballPosition = c.gameObject.transform.position;
             StartCoroutine(myParticleEffects.fireworkSmall());
         }
-    }
-
-    float speed = 5.0f;
-    void BallHitPaddle()
-    {
-        GameObject paddle = GameObject.Find("Player");
-        Vector2 paddlePosition = paddle.transform.position;
-        Vector2 ballPosition = gameObject.transform.position;
-
-        // this is the vector 'pointing' from the paddle to the ball
-        Vector2 delta = ballPosition - paddlePosition;
-        // normalizing converts a vector into a unit vector
-        // (i.e. a vector with the same direction, but a magnitude of 1)
-        Vector2 direction = delta.normalized;
-        // set the velocity to be the direction vector scaled to the desired speed
-        GetComponent<Rigidbody2D>().velocity = direction * speed;
     }
 }
 
