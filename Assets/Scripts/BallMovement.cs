@@ -52,6 +52,9 @@ public class BallMovement : MonoBehaviour {
                 MoveBall();     //if player still has lives then move the ball back to start position
             }
         }
+        else if (str == "PlayerPaddle")
+            ScoreManager.instance.AddScore();  //on paddle Collision add a point
+
         ContactPoint contact = other.GetContact(0);
         Vector3 normal = contact.normal;
         ballDirection = Vector3.Reflect(ballDirection, normal);     // Makes the reflected object appear opposite of the original object     
