@@ -57,7 +57,9 @@ public class BallMovement : MonoBehaviour {
                 MoveBall();     //if player still has lives then move the ball back to start position
             }
         }
-        
+        else if (str == "PlayerPaddle" || str == "PlayerPaddle (1)")
+            ScoreManager.instance.AddScore();  //on paddle Collision add a point
+
         if (str == "YellowStar")
         {
             Debug.Log("bonus tag works");
