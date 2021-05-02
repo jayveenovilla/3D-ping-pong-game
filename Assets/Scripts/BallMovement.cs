@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BallMovement : MonoBehaviour {
     [SerializeField]
     private float ballSpeed;
+    private float startBallSpeed;
     private int countBoundaryHit;
 
     bool isBallMoving;
@@ -19,6 +21,8 @@ public class BallMovement : MonoBehaviour {
     ParticleEffects myParticleEffects;
     DarkMode myDarkMode;
 
+    public Text ballSpeedText;
+
 
     // Start is called before the first frame update
     void Start() {
@@ -30,7 +34,9 @@ public class BallMovement : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         ballStartPosition = transform.position;         //start position of ball
         isBallMoving = false;       //used for BallMove function to prevent spam of ball movement
-        countBoundaryHit = 0;
+        countBoundaryHit = 0;       //count boundary hits to prevent side to side issue
+        startBallSpeed = ballSpeed;
+        ballSpeedText.text = Mathf.Round(ballSpeed - startBallSpeed + 1).ToString();    //speed text display starts at 1
     }
 
     // Update is called once per frame
@@ -59,7 +65,9 @@ public class BallMovement : MonoBehaviour {
         string str = other.gameObject.name;
         if (str == "Boundary Players Goal" || str == "Boundary Enemy Goal")     //check the boundary names
         {
-            countBoundaryHit = 0;
+            ballSpeed = startBallSpeed;     //resets speed to starting speed once ball reaches goal
+            ballSpeedText.text = Mathf.Round(ballSpeed - startBallSpeed + 1).ToString();        //speed text display starts at 1
+            countBoundaryHit = 0;           //reset count boundary hits to 0 to prevent side to side issue
             ballPosition = rb.gameObject.transform.position;
             StartCoroutine(myParticleEffects.blueSmoke());
             myPlayerLives.playerDecreaseLives();          //call gameover function in gameovermenu script
@@ -70,7 +78,9 @@ public class BallMovement : MonoBehaviour {
         }
         else if (str == "PlayerPaddle" || str == "PlayerPaddle (1)")
         {
-            countBoundaryHit = 0;
+            ballSpeed *= 1.01f;     //increase difficulty by raising speed 1% each time ball hits paddle
+            ballSpeedText.text = Mathf.Round(ballSpeed - startBallSpeed + 1).ToString();        //speed text display starts at 1
+            countBoundaryHit = 0;           //reset count boundary hits to 0 to prevent side to side issue
             ScoreManager.instance.AddScore();  //on paddle Collision add a point
             Vector3 paddlePosition = other.transform.position;
             Vector3 ballPosition = gameObject.transform.position;
@@ -89,7 +99,7 @@ public class BallMovement : MonoBehaviour {
             countBoundaryHit++;
         }
 
-        if(countBoundaryHit > 7)
+        if(countBoundaryHit > 7)        //count boundary hits to prevent side to side issue then resets ball if limit hit
         {
             ballStop();
         }
