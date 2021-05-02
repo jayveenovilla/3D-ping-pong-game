@@ -5,20 +5,23 @@ using UnityEngine;
 public class BallMovement : MonoBehaviour {
     [SerializeField]
     private float ballSpeed;
-    private bool isBallMoving;
 
+    bool isBallMoving;
     private Vector3 ballDirection;
     private Vector3 ballStartPosition;
     public Vector3 ballPosition;
     private Rigidbody rb;
 
-    public GameObject Paddle;
+    private GameObject Paddle;
     GameOverMenu myGameOverMenu;
     PlayerLives myPlayerLives;
     ParticleEffects myParticleEffects;
+    DarkMode myDarkMode;
+
 
     // Start is called before the first frame update
     void Start() {
+        myDarkMode = GameObject.Find("DarkMode").GetComponent<DarkMode>();
         myGameOverMenu = GameObject.FindGameObjectWithTag("GameOver").GetComponent<GameOverMenu>();
         Paddle = GameObject.Find("PlayerPaddle");   //attached PlayerLives script to PlayerPaddle
         myParticleEffects = GameObject.Find("ParticleEffects").GetComponent<ParticleEffects>(); ;  //attached ParticleEffects script to particleeffect object
@@ -35,19 +38,19 @@ public class BallMovement : MonoBehaviour {
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (!isBallMoving)      //launches ball only when ball is stationary
-            {
-                MoveBall();
-            }
+        {        
+            MoveBall();
         }
     }
     private void MoveBall() {
-        isBallMoving = true;
-        rb.MovePosition(ballStartPosition);
-        float x = Random.Range(0, 2) == 0 ? -1 : 1;       //set to -1 to launch toward player paddle
-        float z = Random.Range(0, 2) == 0 ? -1 : 1;       //set to -1 to launch toward player paddle
-        ballDirection = new Vector3(x, 0, z).normalized;        //locks movement of ball to x and z axis only. it is based on position of our playing field
+        if (!isBallMoving)      //check if ball is before launching ball. prevent spam launching while ball moving
+        {
+            rb.MovePosition(ballStartPosition);
+            float x = Random.Range(0, 2) == 0 ? -1 : 1;       //set to -1 to launch toward player paddle
+            float z = Random.Range(0, 2) == 0 ? -1 : 1;       //set to -1 to launch toward player paddle
+            ballDirection = new Vector3(x, 0, z).normalized;        //locks movement of ball to x and z axis only. it is based on position of our playing field
+            isBallMoving = true;
+        }
     }
 
     private void OnCollisionEnter(Collision other) {
