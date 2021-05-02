@@ -27,4 +27,10 @@ public class BallAudio : MonoBehaviour
             ballAudio.PlayOneShot(audioChoices[x], 0.7F);
         }
     }
+
+    public void playCoinAudioClip()
+    {
+        Debug.Log("bonus hit");
+        ballAudio.PlayOneShot(audioChoices[7], 0.7F);
+    }
 }
