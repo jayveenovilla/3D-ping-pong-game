@@ -8,6 +8,9 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
     public int score, highScore, bonusPoints, lives;
     public Text scoreText, highScoreText, gameOverScoreText, bonusPointsText,livesText;
+
+    BallAudio myBallAudio;
+    ParticleEffects myParticleEffects;
     private void Awake()
     {
         instance = this;
@@ -15,7 +18,10 @@ public class ScoreManager : MonoBehaviour
         bonusPoints = 0;
 
         if (PlayerPrefs.HasKey("HighScore"))
+        {
             highScore = PlayerPrefs.GetInt("HighScore");
+            GameManager._instance.player.previousHighScore = highScore;
+        }
         else
             highScore = 0;
         highScoreText.text = highScore.ToString();
@@ -23,7 +29,8 @@ public class ScoreManager : MonoBehaviour
     }
     void Start()
     {
-        
+        myBallAudio = GameObject.FindGameObjectWithTag("Ball").GetComponent<BallAudio>();
+        myParticleEffects = GameObject.Find("ParticleEffects").GetComponent<ParticleEffects>(); ;  //attached ParticleEffects script to particleeffect object
     }
 
     // Update is called once per frame
@@ -49,6 +56,8 @@ public class ScoreManager : MonoBehaviour
         if(bonusPoints >= 5)//once the player gets 5 bonus, gets extra life
         {
             GameManager._instance.player.playerLives++;
+            myBallAudio.playLifeUpAudioClip();
+            StartCoroutine(myParticleEffects.newLifeFireworks());
             ResetBonus();
         }
     }
@@ -59,6 +68,7 @@ public class ScoreManager : MonoBehaviour
         {
             highScore = score;
             highScoreText.text = highScore.ToString();
+            GameManager._instance.player.highScore = highScore;
             PlayerPrefs.SetInt("HighScore", highScore);
         }
     }
@@ -82,6 +92,7 @@ public class ScoreManager : MonoBehaviour
     {
         PlayerPrefs.DeleteKey("HighScore");
         highScore = 0;
+        GameManager._instance.player.previousHighScore = highScore;
         highScoreText.text = highScore.ToString();
 
     }
