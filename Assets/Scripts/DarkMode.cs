@@ -25,7 +25,10 @@ public class DarkMode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("joystick button 6"))  //xbox 'back' button to be used as DarkMode switching 
+        {
+            onClick();
+        }
     }
 
     public void darkOn()

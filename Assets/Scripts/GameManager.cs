@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
         public string playerName ;   //player name to be displayed on HUD or game over screen with a high score
         public bool isPlayerAlive;      //not sure if bool is needed. just in case
         public int penaltyCount;
+        public bool isGamePaused;
     }
 
     public Player player;

@@ -41,6 +41,7 @@ public class BallMovement : MonoBehaviour {
         ballSpeedText.text = Mathf.Round(ballSpeed - startBallSpeed + 1).ToString();    //speed text display starts at 1
         myPaddleShrinkPenalty = GameObject.Find("PlayerPaddle").GetComponent<PaddleShrinkPenalty>();
         GameManager._instance.player.isPlayerAlive = true;
+        GameManager._instance.player.isGamePaused = false;
     }
     
     // Update is called once per frame
@@ -49,7 +50,7 @@ public class BallMovement : MonoBehaviour {
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && GameManager._instance.player.isPlayerAlive)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire1")) && GameManager._instance.player.isPlayerAlive && GameManager._instance.player.isGamePaused == false)
         {        
             MoveBall();
         }
