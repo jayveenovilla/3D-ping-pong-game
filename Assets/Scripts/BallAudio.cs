@@ -24,12 +24,23 @@ public class BallAudio : MonoBehaviour
         }
         x = Random.Range(0,7);
         if (ball != null) {     //check if ball object is not destroyed upon game over
-            ballAudio.PlayOneShot(audioChoices[x], 0.7F);
+            ballAudio.PlayOneShot(audioChoices[x], 1.0F);
         }
     }
-
     public void playCoinAudioClip()
     {
         ballAudio.PlayOneShot(audioChoices[7], 0.7F);           //plays coin audio clip
+    }
+    public void playLifeUpAudioClip()
+    {
+        ballAudio.PlayOneShot(audioChoices[8], 1.0F);           //plays coin audio clip
+    }
+    public void playLifeLossAudioClip()
+    {
+        ballAudio.PlayOneShot(audioChoices[9], 1.0F);           //plays coin audio clip
+    }
+    public void playSquishAudioClip()
+    {
+        ballAudio.PlayOneShot(audioChoices[10], 1.0F);           //plays coin audio clip
     }
 }

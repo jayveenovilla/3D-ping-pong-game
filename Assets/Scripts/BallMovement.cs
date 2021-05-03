@@ -40,20 +40,21 @@ public class BallMovement : MonoBehaviour {
         startBallSpeed = ballSpeed;
         ballSpeedText.text = Mathf.Round(ballSpeed - startBallSpeed + 1).ToString();    //speed text display starts at 1
         myPaddleShrinkPenalty = GameObject.Find("PlayerPaddle").GetComponent<PaddleShrinkPenalty>();
+        GameManager._instance.player.isPlayerAlive = true;
     }
-
+    
     // Update is called once per frame
     void FixedUpdate() {
         rb.MovePosition(transform.position + ballDirection * Time.deltaTime * ballSpeed);
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && GameManager._instance.player.isPlayerAlive)
         {        
             MoveBall();
         }
     }
-    private void MoveBall() {
+    public void MoveBall() {
         if (!isBallMoving)      //check if ball is before launching ball. prevent spam launching while ball moving
         {
             rb.MovePosition(ballStartPosition);
@@ -72,6 +73,7 @@ public class BallMovement : MonoBehaviour {
             ballSpeedText.text = Mathf.Round(ballSpeed - startBallSpeed + 1).ToString();        //speed text display starts at 1
             countBoundaryHit = 0;           //reset count boundary hits to 0 to prevent side to side issue
             ballPosition = rb.gameObject.transform.position;
+            myBallAudio.playLifeLossAudioClip();
             StartCoroutine(myParticleEffects.blueSmoke());
             myPlayerLives.playerDecreaseLives();          //call gameover function in gameovermenu script
             myPaddleShrinkPenalty.resetPaddle();            //reset paddle size upon loss of life
@@ -107,8 +109,6 @@ public class BallMovement : MonoBehaviour {
         {
             ballStop();
         }
-
-
     }
 
     private void OnTriggerEnter(Collider c)
@@ -124,6 +124,7 @@ public class BallMovement : MonoBehaviour {
         if (tag == "Penalty")
         {
             ballPosition = c.gameObject.transform.position;
+            myBallAudio.playSquishAudioClip();
             myPaddleShrinkPenalty.shrinkPaddle();           //shrinks paddle upon black star trigger
             StartCoroutine(myParticleEffects.blackFirework());      //black firework
         }
