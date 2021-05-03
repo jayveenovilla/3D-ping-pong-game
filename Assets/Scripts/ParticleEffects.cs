@@ -5,6 +5,7 @@ using UnityEngine;
 public class ParticleEffects : MonoBehaviour
 {
     ParticleSystem blueSmokeParticle;
+    ParticleSystem rocketSmallBlack;
     ParticleSystem rocketSmall;
     private Vector3 particlePosition;
     private Vector3 startPosition;
@@ -15,6 +16,7 @@ public class ParticleEffects : MonoBehaviour
     {
         myBallMovement = GameObject.FindGameObjectWithTag("Ball").GetComponent<BallMovement>();
         blueSmokeParticle = GameObject.Find("SmokeBlue").GetComponentInChildren<ParticleSystem>();  //particles are offcamera in a ParticleEffects object
+        rocketSmallBlack = GameObject.Find("RocketSmallBlack").GetComponentInChildren<ParticleSystem>();  //particles are offcamera in a ParticleEffects object
         rocketSmall = GameObject.Find("RocketSmall").GetComponentInChildren<ParticleSystem>();      
         startPosition = GameObject.Find("ParticleEffects").transform.position;                  //position of ParticleEffects object for particles to stay active between uses off camera
 
@@ -44,7 +46,21 @@ public class ParticleEffects : MonoBehaviour
             blueSmokeParticle.Stop();
         }
     }
-    
+
+    public IEnumerator blackFirework()        //smoke particles plays upon player loss of life
+    {
+        particlePosition = myBallMovement.ballPosition;
+        rocketSmallBlack.gameObject.transform.position = particlePosition;
+        yield return new WaitForSecondsRealtime(.5f);
+        rocketSmallBlack.gameObject.transform.position = startPosition;
+    }
+
+    public IEnumerator blackFirework(Transform pos)        //smoke particles plays upon player loss of life
+    {
+        rocketSmallBlack.gameObject.transform.position = pos.position;
+        yield return new WaitForSecondsRealtime(.5f);
+        rocketSmallBlack.gameObject.transform.position = startPosition;
+    }
     public IEnumerator fireworkSmall()
     {
         particlePosition = myBallMovement.ballPosition;

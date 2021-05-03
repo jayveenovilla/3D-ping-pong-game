@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3990927405195657335}
   m_Layer: 0
   m_Name: BlackStarRotate
-  m_TagString: Bonus
+  m_TagString: Penalty
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

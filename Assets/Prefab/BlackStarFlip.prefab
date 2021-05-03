@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4005683117203561051}
   m_Layer: 0
   m_Name: BlackStarFlip
-  m_TagString: Untagged
+  m_TagString: Penalty
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 7635048968990034104}
   m_Layer: 0
   m_Name: BlackStarFlip
-  m_TagString: Bonus
+  m_TagString: Penalty
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
