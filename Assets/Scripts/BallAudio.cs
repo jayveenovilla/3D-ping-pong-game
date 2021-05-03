@@ -30,7 +30,6 @@ public class BallAudio : MonoBehaviour
 
     public void playCoinAudioClip()
     {
-        Debug.Log("bonus hit");
-        ballAudio.PlayOneShot(audioChoices[7], 0.7F);
+        ballAudio.PlayOneShot(audioChoices[7], 0.7F);           //plays coin audio clip
     }
 }

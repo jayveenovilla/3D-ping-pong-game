@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
     public GameManager gameManager;
-
+    public GameMusic myGameMusic;
     public Button playButton, creditsButton, quitButton, menuButton, instructionsButton;
 
     private void Awake() {
@@ -38,7 +38,6 @@ public class MenuController : MonoBehaviour {
             quitButton.onClick.AddListener(() => QuitGame());
         }
 
-
     }
 
     public bool CheckButton(string str) {
@@ -54,5 +53,11 @@ public class MenuController : MonoBehaviour {
         #else
             Application.Quit();
         #endif
+    }
+
+    private void Start()
+    {
+        myGameMusic = GameObject.FindObjectOfType<GameMusic>();
+        myGameMusic.playMusic();
     }
 }
