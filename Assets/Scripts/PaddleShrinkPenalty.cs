@@ -18,7 +18,7 @@ public class PaddleShrinkPenalty : MonoBehaviour
         startSize = paddle1.transform.localScale;
         paddle1 = GameObject.Find("PlayerPaddle");
         paddle2 = GameObject.Find("PlayerPaddle (1)");
-        maxLocalScale = new Vector3(2, 1, 1);
+        maxLocalScale = new Vector3(2, 1, 1);           //minimum size allowed for panel before shrinking stops
         maxScaleChangeMagnitude = maxLocalScale.magnitude;
     }
 
@@ -30,7 +30,7 @@ public class PaddleShrinkPenalty : MonoBehaviour
 
     public void shrinkPaddle()
     {
-        actualScaleMagnitude = transform.localScale.magnitude;
+        actualScaleMagnitude = transform.localScale.magnitude;      //actual current size of paddle
         if (actualScaleMagnitude >= maxScaleChangeMagnitude)
         {
             paddle1.transform.localScale += new Vector3(-1, 0, 0);
@@ -38,7 +38,7 @@ public class PaddleShrinkPenalty : MonoBehaviour
         }
     }
 
-    public void resetPaddle()
+    public void resetPaddle()                   //resets paddle size to normal
     {
         paddle1.transform.localScale = startSize;
         paddle2.transform.localScale = startSize;

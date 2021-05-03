@@ -74,7 +74,7 @@ public class BallMovement : MonoBehaviour {
             ballPosition = rb.gameObject.transform.position;
             StartCoroutine(myParticleEffects.blueSmoke());
             myPlayerLives.playerDecreaseLives();          //call gameover function in gameovermenu script
-            myPaddleShrinkPenalty.resetPaddle();
+            myPaddleShrinkPenalty.resetPaddle();            //reset paddle size upon loss of life
             if (GameManager._instance.player.playerLives > 0)
             {
                 ballStop();
@@ -124,8 +124,8 @@ public class BallMovement : MonoBehaviour {
         if (tag == "Penalty")
         {
             ballPosition = c.gameObject.transform.position;
-            myPaddleShrinkPenalty.shrinkPaddle();
-            StartCoroutine(myParticleEffects.blackFirework());
+            myPaddleShrinkPenalty.shrinkPaddle();           //shrinks paddle upon black star trigger
+            StartCoroutine(myParticleEffects.blackFirework());      //black firework
         }
     }
 

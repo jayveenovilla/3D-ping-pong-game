@@ -21,9 +21,9 @@ public class DestroyBonus : MonoBehaviour
                 ScoreManager.instance.AddBonus();  //add a BonusPoints
             }
 
-            if (gameObject.tag == "Penalty")
+            if (gameObject.tag == "Penalty")            //changed black star tags as "Penalty"
             {
-                if(gameObject != null) { 
+                if(gameObject != null) {        //check if gameobject is null
                     Destroy(gameObject);
                     GameManager._instance.player.penaltyCount--;
                 }
