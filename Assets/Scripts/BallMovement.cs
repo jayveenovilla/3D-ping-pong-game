@@ -20,6 +20,7 @@ public class BallMovement : MonoBehaviour {
     PlayerLives myPlayerLives;
     ParticleEffects myParticleEffects;
     DarkMode myDarkMode;
+    BallAudio myBallAudio;
 
     public Text ballSpeedText;
 
@@ -28,6 +29,7 @@ public class BallMovement : MonoBehaviour {
     void Start() {
         myDarkMode = GameObject.Find("DarkMode").GetComponent<DarkMode>();
         myGameOverMenu = GameObject.FindGameObjectWithTag("GameOver").GetComponent<GameOverMenu>();
+        myBallAudio = GameObject.FindGameObjectWithTag("Ball").GetComponent<BallAudio>();
         Paddle = GameObject.Find("PlayerPaddle");   //attached PlayerLives script to PlayerPaddle
         myParticleEffects = GameObject.Find("ParticleEffects").GetComponent<ParticleEffects>(); ;  //attached ParticleEffects script to particleeffect object
         myPlayerLives = Paddle.GetComponent<PlayerLives>();
@@ -111,6 +113,7 @@ public class BallMovement : MonoBehaviour {
         {
             ballPosition = c.gameObject.transform.position;
             StartCoroutine(myParticleEffects.fireworkSmall());
+            myBallAudio.playCoinAudioClip();
         }
     }
 

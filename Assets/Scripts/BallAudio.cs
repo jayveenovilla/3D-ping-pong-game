@@ -27,4 +27,9 @@ public class BallAudio : MonoBehaviour
             ballAudio.PlayOneShot(audioChoices[x], 0.7F);
         }
     }
+
+    public void playCoinAudioClip()
+    {
+        ballAudio.PlayOneShot(audioChoices[7], 0.7F);           //plays coin audio clip
+    }
 }
