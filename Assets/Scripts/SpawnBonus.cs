@@ -27,7 +27,7 @@ public class SpawnBonus : MonoBehaviour
         if(time <= 0)
         {
             Vector3 bonusPos = new Vector3(Random.Range(-11f,11f), 1.5f, Random.Range(-21f,21f));
-            prefabCount = Random.Range(0,5);
+            prefabCount = Random.Range(0,49);
             if(onTableCount != 3)
             {
                 onTableCount++;
