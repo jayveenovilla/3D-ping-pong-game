@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameOverMenu : MonoBehaviour
 {
     public MenuController menuController;
     public GameObject gameOverMenu;
+
+    public GameObject restartButton;
 
     private GameObject ball;
 
@@ -35,6 +38,8 @@ public class GameOverMenu : MonoBehaviour
     public void GameOver()   //game over menu to be activated when player runs out of lives
     {
         gameOverMenu.gameObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);    //clear selected object
+        EventSystem.current.SetSelectedGameObject(restartButton);       //restartButton is first selected button
         ball.SetActive(false);      //inactivate ball on game over scenario. destroy(object) causes an error with sound but now ball sound script now has a null check
     }
     void Update()
