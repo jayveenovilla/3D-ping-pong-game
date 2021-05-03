@@ -23,7 +23,7 @@ public class BallMovement : MonoBehaviour {
     BallAudio myBallAudio;
 
     public Text ballSpeedText;
-
+    public PaddleShrinkPenalty myPaddleShrinkPenalty;
 
     // Start is called before the first frame update
     void Start() {
@@ -39,6 +39,7 @@ public class BallMovement : MonoBehaviour {
         countBoundaryHit = 0;       //count boundary hits to prevent side to side issue
         startBallSpeed = ballSpeed;
         ballSpeedText.text = Mathf.Round(ballSpeed - startBallSpeed + 1).ToString();    //speed text display starts at 1
+        myPaddleShrinkPenalty = GameObject.Find("PlayerPaddle").GetComponent<PaddleShrinkPenalty>();
     }
 
     // Update is called once per frame
@@ -73,6 +74,7 @@ public class BallMovement : MonoBehaviour {
             ballPosition = rb.gameObject.transform.position;
             StartCoroutine(myParticleEffects.blueSmoke());
             myPlayerLives.playerDecreaseLives();          //call gameover function in gameovermenu script
+            myPaddleShrinkPenalty.resetPaddle();            //reset paddle size upon loss of life
             if (GameManager._instance.player.playerLives > 0)
             {
                 ballStop();
@@ -105,15 +107,25 @@ public class BallMovement : MonoBehaviour {
         {
             ballStop();
         }
+
+
     }
 
     private void OnTriggerEnter(Collider c)
     {
-        if (c.gameObject.tag == "Bonus")        //for use when the ball interacts with any of the stars/coins
+        string tag = c.gameObject.tag;
+        if (tag == "Bonus")        //for use when the ball interacts with any of the stars/coins
         {
             ballPosition = c.gameObject.transform.position;
             StartCoroutine(myParticleEffects.fireworkSmall());
             myBallAudio.playCoinAudioClip();
+        }
+
+        if (tag == "Penalty")
+        {
+            ballPosition = c.gameObject.transform.position;
+            myPaddleShrinkPenalty.shrinkPaddle();           //shrinks paddle upon black star trigger
+            StartCoroutine(myParticleEffects.blackFirework());      //black firework
         }
     }
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1756375416485846904}
   m_Layer: 0
   m_Name: BlackStarTilt
-  m_TagString: Untagged
+  m_TagString: Penalty
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 3399444686128240383}
   m_Layer: 0
   m_Name: BlackStarTilt
-  m_TagString: Bonus
+  m_TagString: Penalty
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

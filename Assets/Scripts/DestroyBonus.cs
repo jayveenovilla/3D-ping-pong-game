@@ -13,10 +13,22 @@ public class DestroyBonus : MonoBehaviour
     {
         if (c.gameObject.tag == "Ball")
         {
-            //plus points todo
-            spawnBonus.onTableCount--;
-            Destroy(gameObject);
-            ScoreManager.instance.AddBonus();  //add a BonusPoints
+            //plus points todo          
+            if(gameObject.tag == "Bonus")
+            {
+                spawnBonus.onTableCount--;
+                Destroy(gameObject);
+                ScoreManager.instance.AddBonus();  //add a BonusPoints
+            }
+
+            if (gameObject.tag == "Penalty")            //changed black star tags as "Penalty"
+            {
+                if(gameObject != null) {        //check if gameobject is null
+                    Destroy(gameObject);
+                    GameManager._instance.player.penaltyCount--;
+                }
+            }
+
         }
     }
 }

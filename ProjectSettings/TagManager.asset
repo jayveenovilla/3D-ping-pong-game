@@ -8,6 +8,7 @@ TagManager:
   - Ball
   - GameOver
   - Bonus
+  - Penalty
   layers:
   - Default
   - TransparentFX
