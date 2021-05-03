@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 [SerializeField]
 public class GameManager : MonoBehaviour {
 
     public MenuController menuController;
+    int sceneBuildIndex;
+    public AudioClip[] musicChoices;
+    AudioSource music;
     public class Player
     {
         public int highScore;      //current high score
@@ -29,5 +32,29 @@ public class GameManager : MonoBehaviour {
 
     public void ConnectMenuController() {
         menuController = GameObject.FindObjectOfType<MenuController>();
+    }
+    public void playMusic()
+    {
+        GameManager._instance.music = GetComponent<AudioSource>();      //locate singelton audio source
+        sceneBuildIndex = SceneManager.GetActiveScene().buildIndex;     //get active scene number
+        if (sceneBuildIndex == 0)
+        {
+            if (GameManager._instance.music.clip != musicChoices[0])       //if in menu scene check if proper song is play else stop the song, change song, and play proper song
+            {
+                GameManager._instance.music.Stop();
+                GameManager._instance.music.clip = musicChoices[0];     //selects happy upbeat song
+                GameManager._instance.music.Play();
+            }
+        }
+
+        if (sceneBuildIndex == 2)
+        {
+            if (GameManager._instance.music.clip != musicChoices[1])    //if in play scene check if proper song is play else stop the song, change song, and play proper song
+            {
+                GameManager._instance.music.Stop();
+                GameManager._instance.music.clip = musicChoices[1];     //selects ukelele song
+                GameManager._instance.music.Play();
+            }
+        }
     }
 }
