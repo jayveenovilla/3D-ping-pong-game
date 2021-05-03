@@ -8527,6 +8527,7 @@ MonoBehaviour:
   menuController: {fileID: 0}
   gameOverMenu: {fileID: 7315934535179102553}
   newHighScore: {fileID: 2135821661}
+  newHighScoreText: {fileID: 2135821663}
 --- !u!1 &7315934534702257372
 GameObject:
   m_ObjectHideFlags: 0

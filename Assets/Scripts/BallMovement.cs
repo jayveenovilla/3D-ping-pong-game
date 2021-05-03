@@ -40,8 +40,9 @@ public class BallMovement : MonoBehaviour {
         startBallSpeed = ballSpeed;
         ballSpeedText.text = Mathf.Round(ballSpeed - startBallSpeed + 1).ToString();    //speed text display starts at 1
         myPaddleShrinkPenalty = GameObject.Find("PlayerPaddle").GetComponent<PaddleShrinkPenalty>();
+        GameManager._instance.player.isPlayerAlive = true;
     }
-
+    
     // Update is called once per frame
     void FixedUpdate() {
         rb.MovePosition(transform.position + ballDirection * Time.deltaTime * ballSpeed);
