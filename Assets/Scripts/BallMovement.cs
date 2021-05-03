@@ -48,7 +48,7 @@ public class BallMovement : MonoBehaviour {
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire1"))    //default joystick button 0(xbox A button) to be used along with 'space' key for launching ball
         {        
             MoveBall();
         }

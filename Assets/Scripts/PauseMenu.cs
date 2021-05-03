@@ -51,7 +51,7 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         //added "is gameobject active" check to prevent Pause menu from being activated during Game Over Menu
-        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "Playtest" && !gameOverChild.gameObject.activeSelf)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown("joystick button 7")) && SceneManager.GetActiveScene().name == "Playtest" && !gameOverChild.gameObject.activeSelf)    //xbox 'start' button to be use along with 'esc' key for pause menu
         {
             if (!isGamePaused)
             {
