@@ -622,7 +622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9cba8e783974ad44a81670fb39aafa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballSpeed: 20
+  ballSpeed: 25
   ballPosition: {x: 0, y: 0, z: 0}
   ballSpeedText: {fileID: 49054763}
   myPaddleShrinkPenalty: {fileID: 0}
