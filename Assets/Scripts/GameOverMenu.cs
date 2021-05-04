@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameOverMenu : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class GameOverMenu : MonoBehaviour
     BallAudio myBallAudio;
     BallMovement myBallMovement;
     public Text newHighScoreText;
+
+    public GameObject restartButton;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +48,8 @@ public class GameOverMenu : MonoBehaviour
     public void GameOver()   //game over menu to be activated when player runs out of lives
     {
         gameOverMenu.gameObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);    //clear selected object
+        EventSystem.current.SetSelectedGameObject(restartButton);       //restartButton is first selected button
         myBallMovement.ballStop();      //stop ball and reset to center on game over scenario. destroy(object) or inactive causes an error with sound
         if (GameManager._instance.player.highScore > GameManager._instance.player.previousHighScore)
         {          
