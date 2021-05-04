@@ -46,7 +46,12 @@ public class BallMovement : MonoBehaviour {
     
     // Update is called once per frame
     void FixedUpdate() {
-        rb.MovePosition(transform.position + ballDirection * Time.deltaTime * ballSpeed);
+        if (isBallMoving)
+            rb.velocity  = new Vector3(transform.position.x + ballDirection.x * Time.deltaTime * ballSpeed, transform.position.y, transform.position.z + ballDirection.z * Time.deltaTime * ballSpeed);
+        //ballDirection = rb.velocity;
+        //rb.velocity(transform.position + ballDirection * Time.deltaTime * ballSpeed);
+        //rb.MovePosition(transform.position + ballDirection * Time.deltaTime * ballSpeed);
+
     }
     private void Update()
     {
@@ -59,8 +64,8 @@ public class BallMovement : MonoBehaviour {
         if (!isBallMoving)      //check if ball is before launching ball. prevent spam launching while ball moving
         {
             rb.MovePosition(ballStartPosition);
-            float x = Random.Range(0, 2) == 0 ? -1 : 1;       //set to -1 to launch toward player paddle
-            float z = Random.Range(0, 2) == 0 ? -1 : 1;       //set to -1 to launch toward player paddle
+            float x = 0;//Random.Range(0, 2) == 0 ? -1 : 1;       //set to 0 to launch toward player paddle
+            float z = -1;//Random.Range(0, 2) == 0 ? -1 : 1;       //set to -1 to launch toward player paddle
             ballDirection = new Vector3(x, 0, z).normalized;        //locks movement of ball to x and z axis only. it is based on position of our playing field
             isBallMoving = true;
         }
@@ -92,14 +97,30 @@ public class BallMovement : MonoBehaviour {
             Vector3 paddlePosition = other.transform.position;
             Vector3 ballPosition = gameObject.transform.position;
             Vector3 delta = ballPosition - paddlePosition;      //angle ball deflects off of paddle changes depending on position paddle is hit
+            if (delta == new Vector3(delta.x,delta.y,1) || delta == new Vector3(delta.x, delta.y, -1))
+            {
+                ballStop();
+            }
             Vector3 direction = delta.normalized;
             ballDirection = direction;
-        }
-        else
+        }/*
+        else if (str == "Boundary Left" || str == "Boundary Right")
         {
+            Debug.Log("hit");
+            Vector3 paddlePosition = other.transform.position;
+            Vector3 ballPosition = gameObject.transform.position;
+            Vector3 delta = ballPosition - paddlePosition;      //angle ball deflects off of paddle changes depending on position paddle is hit
+            if (delta.magnitude <= 1)
+            {
+                ballStop();
+            }
+        }*/
+        else
+        {   //contact with left and right boundary
             ContactPoint contact = other.GetContact(0);
             Vector3 normal = contact.normal;
-            ballDirection = Vector3.Reflect(ballDirection, normal);     // Makes the reflected object appear opposite of the original object     
+            ballDirection = Vector3.Reflect(ballDirection, normal);     // Makes the reflected object appear opposite of the original object
+            rb.velocity = ballDirection;
         }
         
         if (str == "Boundary Left" || str == "Boundary Right"){
