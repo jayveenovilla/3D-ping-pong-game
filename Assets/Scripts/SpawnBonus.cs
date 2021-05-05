@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnBonus : MonoBehaviour
-{
+{ 
     public GameObject[] bonusPrefabs; //prefabs to insert
     private float time;
     public float spawnTime = 2.0f;
